@@ -6,7 +6,15 @@
 # ☐ 200 g + 1 oz แปลงผลลัพธ์เป็นกรัมโดยใช้อัตราแปลงหน่วย
 # ☐ (200 g + 1 oz) × 2
 
-from kitchen import Quantity
+from kitchen import Quantity, Converter
+
+
+def grams(amount):
+    return Quantity(amount, "g")
+
+
+def ounces(amount):
+    return Quantity(amount, "oz")
 
 
 def test_multiplication():
@@ -32,6 +40,7 @@ def test_equality():
 
 def test_grams_are_not_ounces():
     assert Quantity(1, "g") != Quantity(1, "oz")
+
 
 def test_simple_addition():
     total = grams(200).plus(grams(300))
